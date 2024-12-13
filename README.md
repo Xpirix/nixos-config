@@ -18,6 +18,14 @@ To use this configuration repository, follow these steps:
 4. Build and switch to the NixOS configuration: `sudo nixos-rebuild switch --flake .#hostname`
 5. Set up Home Manager: `home-manager switch`
 
+## Utils Command
+
+To check the flake:
+
+```sh
+nix flake check . --impure
+```
+
 ## Customization
 
 Feel free to customize the configuration files to suit your needs. You can modify the `configuration.nix` file for system-wide configuration and the `home.nix` file for user-specific configuration.

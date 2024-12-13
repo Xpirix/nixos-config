@@ -1,18 +1,11 @@
 { config, pkgs, ... }:
 
-let
-  home-manager = import <home-manager> {};
-in
 {
-  home = {
-    stateVersion = "24.05"; # Adjust to the appropriate version
+   home-manager.users.xpirix = {
+    home.stateVersion = "24.05"; # Adjust to the appropriate version
 
     programs = {
       zsh.enable = true; # Example for Zsh
-      gnome = {
-        enable = true;
-        extensions = [ "dash-to-dock@micxgx.gmail.com" ]; # Add GNOME extensions here
-      };
     };
 
     # Include custom dotfiles
