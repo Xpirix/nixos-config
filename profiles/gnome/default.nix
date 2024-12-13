@@ -30,32 +30,32 @@
   # Do not turn on bluetooth on boot.
   hardware.bluetooth.powerOnBoot = false;
 
-  users.users.electro.extraGroups = [
-    "networkmanager" # don't ask password when connecting to networks.
-  ];
+  # users.users.electro.extraGroups = [
+  #   "networkmanager" # don't ask password when connecting to networks.
+  # ];
 
   environment = {
-    persistence.state.users.electro = {
-      files = [
-        # Multi-monitor configuration.
-        ".config/monitors.xml"
-      ];
+    # persistence.state.users.electro = {
+    #   files = [
+    #     # Multi-monitor configuration.
+    #     ".config/monitors.xml"
+    #   ];
 
-      directories = [
-        ".cache/fontconfig"
-        ".cache/tracker3"
+    #   directories = [
+    #     ".cache/fontconfig"
+    #     ".cache/tracker3"
 
-        # https://specifications.freedesktop.org/thumbnail-spec/thumbnail-spec-latest.html#DIRECTORY
-        ".cache/thumbnails/large"
-        ".cache/thumbnails/normal"
-        ".cache/thumbnails/x-large"
-        ".cache/thumbnails/xx-large"
-        ".cache/thumbnails/fail"
+    #     # https://specifications.freedesktop.org/thumbnail-spec/thumbnail-spec-latest.html#DIRECTORY
+    #     ".cache/thumbnails/large"
+    #     ".cache/thumbnails/normal"
+    #     ".cache/thumbnails/x-large"
+    #     ".cache/thumbnails/xx-large"
+    #     ".cache/thumbnails/fail"
 
-        ".cache/keepassxc"
-        ".config/keepassxc"
-      ];
-    };
+    #     ".cache/keepassxc"
+    #     ".config/keepassxc"
+    #   ];
+    # };
 
     sessionVariables.GTK_THEME = "adw-gtk3-dark";
 
@@ -65,9 +65,9 @@
 
       # Nautilus extensions.
       nautilus-python
-      nautilus-amberol
+      # nautilus-amberol
       nautilus-open-any-terminal
-      nautilus-vimv
+      # nautilus-vimv
 
       # Thumbnailers.
       ffmpegthumbnailer
@@ -304,12 +304,12 @@
 
   # TODO: Refactor to `systemd.user.tmpfiles.settings` when
   # https://github.com/NixOS/nixpkgs/pull/317383 is merged.
-  systemd.tmpfiles.settings."10-gnome-autostart" = {
-    # Link the monitors.xml files together. This is not ideal, but GDM and
-    # gnome-shell don't quite communicate on unified display settings yet.
-    "/run/gdm/.config/monitors.xml"."L+".argument =
-      "${config.environment.persistence.state.persistentStoragePath}/home/electro/.config/monitors.xml";
-  };
+  # systemd.tmpfiles.settings."10-gnome-autostart" = {
+  #   # Link the monitors.xml files together. This is not ideal, but GDM and
+  #   # gnome-shell don't quite communicate on unified display settings yet.
+  #   "/run/gdm/.config/monitors.xml"."L+".argument =
+  #     "${config.environment.persistence.state.persistentStoragePath}/home/electro/.config/monitors.xml";
+  # };
 
   programs.firefox.autoConfig = ''
     pref("widget.gtk.non-native-titlebar-buttons.enabled", false);
