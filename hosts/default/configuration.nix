@@ -9,6 +9,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./cachix.nix
+    ../../profiles/gnome
+    ../../profiles/shell
       inputs.home-manager.nixosModules.default
     ];
 
