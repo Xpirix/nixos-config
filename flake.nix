@@ -7,17 +7,19 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux"; # Change this if you're using a different architecture
+      pkgs = nixpkgs.legacyPackages.${system};
     in
     {
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
           system = system;
+          # extraSpecialArgs = { inherit inputs; };
           modules = [
-            ./configurations/configuration.nix
-            home-manager.nixosModules.home-manager
+            ./hosts/default/configuration.nix
+            inputs.home-manager.nixosModules.default
           ];
         };
       };

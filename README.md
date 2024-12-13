@@ -8,22 +8,23 @@ This repository contains my NixOS configuration files using flakes, Home Manager
 - [Home Manager](https://github.com/nix-community/home-manager): Home Manager allows for easy management of user-specific configuration files.
 - Dotfiles: This repository also includes my personal dotfiles for various applications and tools.
 
-## Getting Started
-
-To use this configuration repository, follow these steps:
-
-1. Clone the repository: `git clone https://github.com/your-username/nixos-config.git`
-2. Install Nix: Follow the instructions in the [Nix manual](https://nixos.org/manual/nix/stable/#chap-installation) to install Nix on your system.
-3. Activate the Nix shell: `nix-shell`
-4. Build and switch to the NixOS configuration: `sudo nixos-rebuild switch --flake .#hostname`
-5. Set up Home Manager: `home-manager switch`
-
 ## Utils Command
 
 To check the flake:
 
 ```sh
 nix flake check . --impure
+```
+
+To build and switch to the NixOs Configuration:
+
+```sh
+sudo nixos-rebuild switch --flake .#nixos --impure
+```
+
+To generate the `home.nix` file:
+```sh
+nix run home-manager/master -- init
 ```
 
 ## Customization
